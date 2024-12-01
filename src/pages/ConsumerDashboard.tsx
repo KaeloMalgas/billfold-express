@@ -1,42 +1,80 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, QrCode, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FileText, Upload, User, Palette } from "lucide-react";
 
 export default function ConsumerDashboard() {
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">Welcome Back!</h1>
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">Current Bill</CardTitle>
-            <FileText className="w-4 h-4 text-muted-foreground" />
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="flex justify-between items-center p-6 border-b">
+        <h1 className="text-3xl font-bold text-black">Consumer Dashboard</h1>
+        <Button variant="destructive">Logout</Button>
+      </header>
+
+      {/* Welcome Section */}
+      <div className="p-6">
+        <h2 className="text-4xl font-bold text-black mb-8">Welcome, Consumer</h2>
+
+        {/* Last Bill Summary Card */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-black">Last Bill Summary</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$123.45</div>
-            <Button variant="outline" className="w-full mt-4">View Bill</Button>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <p className="text-lg">
+                <span className="font-medium">Amount Due: </span>
+                <span className="text-black">$150.25</span>
+              </p>
+              <p className="text-lg">
+                <span className="font-medium">Due Date: </span>
+                <span className="text-black">2023-04-15</span>
+              </p>
+            </div>
+            <Button variant="outline" className="flex items-center gap-2">
+              <FileText className="h-4 w-4" />
+              View Full Bill
+            </Button>
           </CardContent>
         </Card>
+
+        {/* Quick Actions Card */}
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">Meter Reading</CardTitle>
-            <QrCode className="w-4 h-4 text-muted-foreground" />
+          <CardHeader>
+            <CardTitle className="text-2xl text-black">Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">12345</div>
-            <Button variant="outline" className="w-full mt-4">Upload Reading</Button>
+            <Button 
+              variant="outline" 
+              className="w-full text-left flex items-center gap-2 mb-4"
+            >
+              <FileText className="h-4 w-4" />
+              View All Bills
+            </Button>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-            <CardTitle className="text-sm font-medium">Last Payment</CardTitle>
-            <CreditCard className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$98.76</div>
-            <p className="text-xs text-muted-foreground mt-1">Paid on 2024-02-15</p>
-          </CardContent>
-        </Card>
+      </div>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4">
+        <div className="flex justify-around items-center max-w-md mx-auto">
+          <Button variant="ghost" className="flex flex-col items-center gap-1">
+            <Upload className="h-5 w-5" />
+            <span className="text-xs">Upload Reading</span>
+          </Button>
+          <Button variant="ghost" className="flex flex-col items-center gap-1">
+            <FileText className="h-5 w-5" />
+            <span className="text-xs">View Bills</span>
+          </Button>
+          <Button variant="ghost" className="flex flex-col items-center gap-1">
+            <User className="h-5 w-5" />
+            <span className="text-xs">Edit Profile</span>
+          </Button>
+          <Button variant="ghost" className="flex flex-col items-center gap-1">
+            <Palette className="h-5 w-5" />
+            <span className="text-xs">Customize Theme</span>
+          </Button>
+        </div>
       </div>
     </div>
   );
