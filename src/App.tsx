@@ -7,6 +7,9 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import ConsumerDashboard from "./pages/ConsumerDashboard";
+import QRScanner from "./pages/QRScanner";
+import Bills from "./pages/Bills";
+import Profile from "./pages/Profile";
 import { useAuth } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
@@ -48,6 +51,30 @@ function AppRoutes() {
         element={
           <ProtectedRoute allowedRole="consumer">
             <ConsumerDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/qr-scanner"
+        element={
+          <ProtectedRoute allowedRole="consumer">
+            <QRScanner />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/bills"
+        element={
+          <ProtectedRoute allowedRole="consumer">
+            <Bills />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute allowedRole="consumer">
+            <Profile />
           </ProtectedRoute>
         }
       />

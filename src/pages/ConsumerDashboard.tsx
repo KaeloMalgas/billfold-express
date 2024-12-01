@@ -1,8 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, Upload, User, Palette } from "lucide-react";
+import { FileText, Upload, User, QrCode } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ConsumerDashboard() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -31,7 +34,11 @@ export default function ConsumerDashboard() {
                 <span className="text-black">2023-04-15</span>
               </p>
             </div>
-            <Button variant="outline" className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              className="flex items-center gap-2"
+              onClick={() => navigate("/bills")}
+            >
               <FileText className="h-4 w-4" />
               View Full Bill
             </Button>
@@ -47,6 +54,7 @@ export default function ConsumerDashboard() {
             <Button 
               variant="outline" 
               className="w-full text-left flex items-center gap-2 mb-4"
+              onClick={() => navigate("/bills")}
             >
               <FileText className="h-4 w-4" />
               View All Bills
@@ -58,21 +66,29 @@ export default function ConsumerDashboard() {
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4">
         <div className="flex justify-around items-center max-w-md mx-auto">
-          <Button variant="ghost" className="flex flex-col items-center gap-1">
-            <Upload className="h-5 w-5" />
-            <span className="text-xs">Upload Reading</span>
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1"
+            onClick={() => navigate("/qr-scanner")}
+          >
+            <QrCode className="h-5 w-5" />
+            <span className="text-xs">Scan QR</span>
           </Button>
-          <Button variant="ghost" className="flex flex-col items-center gap-1">
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1"
+            onClick={() => navigate("/bills")}
+          >
             <FileText className="h-5 w-5" />
             <span className="text-xs">View Bills</span>
           </Button>
-          <Button variant="ghost" className="flex flex-col items-center gap-1">
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1"
+            onClick={() => navigate("/profile")}
+          >
             <User className="h-5 w-5" />
             <span className="text-xs">Edit Profile</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col items-center gap-1">
-            <Palette className="h-5 w-5" />
-            <span className="text-xs">Customize Theme</span>
           </Button>
         </div>
       </div>
