@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase';
+import { supabase } from '../lib/supabase';
 
 export const uploadBill = async (file: File, consumerId: string) => {
   const fileName = `bills/${consumerId}/${Date.now()}-${file.name}`;
