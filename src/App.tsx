@@ -16,6 +16,10 @@ import QRScanner from "./pages/QRScanner";
 import Bills from "./pages/Bills";
 import Profile from "./pages/Profile";
 import { useAuth } from "./contexts/AuthContext";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import SignUp from './pages/signup';
+import SignIn from './pages/Login';
 
 const queryClient = new QueryClient();
 
@@ -141,5 +145,15 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+const App: React.FC = () => {
+  return (
+      <Router>
+          <Switch>
+              <Route path="/signup" component={SignUp} />
+              <Route path="/" component={SignIn} />
+          </Switch>
+      </Router>
+  );
+};
 
 export default App;
