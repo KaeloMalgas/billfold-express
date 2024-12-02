@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -84,6 +84,16 @@ export default function Login() {
               Sign In
             </Button>
           </form>
+          <div className="mt-4 text-center text-sm">
+            <span className="text-muted-foreground">Don't have an account? </span>
+            <Button
+              variant="link"
+              className="p-0 text-primary"
+              onClick={() => navigate("/signup")}
+            >
+              Sign up
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>
