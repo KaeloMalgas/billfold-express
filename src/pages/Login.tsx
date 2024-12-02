@@ -10,12 +10,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<"admin" | "consumer">("consumer");
-  const { login } = useAuth();
+  const { login, isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect if already authenticated
+  if (isAuthenticated) {
+    navigate(user?.role === "admin" ? "/admin" : "/dashboard");
+    return null;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
