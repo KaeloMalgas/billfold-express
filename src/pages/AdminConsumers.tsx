@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, UserMinus, UserCog } from "lucide-react";
+import { ArrowLeft, UserPlus, UserMinus, UserCog } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminConsumers() {
@@ -23,7 +23,13 @@ export default function AdminConsumers() {
         Back to Dashboard
       </Button>
 
-      <h1 className="text-2xl font-bold mb-6 text-black">Manage Consumers</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-black">Manage Consumers</h1>
+        <Button onClick={() => navigate("/admin/add-consumer")}>
+          <UserPlus className="h-4 w-4 mr-2" />
+          Add Consumer
+        </Button>
+      </div>
 
       <div className="space-y-4">
         {consumers.map((consumer) => (

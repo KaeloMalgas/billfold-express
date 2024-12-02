@@ -6,6 +6,11 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminConsumers from "./pages/AdminConsumers";
+import AdminAddConsumer from "./pages/AdminAddConsumer";
+import AdminMeters from "./pages/AdminMeters";
+import AdminBills from "./pages/AdminBills";
+import AdminProfile from "./pages/AdminProfile";
 import ConsumerDashboard from "./pages/ConsumerDashboard";
 import QRScanner from "./pages/QRScanner";
 import Bills from "./pages/Bills";
@@ -43,6 +48,46 @@ function AppRoutes() {
         element={
           <ProtectedRoute allowedRole="admin">
             <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/consumers"
+        element={
+          <ProtectedRoute allowedRole="admin">
+            <AdminConsumers />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/add-consumer"
+        element={
+          <ProtectedRoute allowedRole="admin">
+            <AdminAddConsumer />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/meters"
+        element={
+          <ProtectedRoute allowedRole="admin">
+            <AdminMeters />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/bills"
+        element={
+          <ProtectedRoute allowedRole="admin">
+            <AdminBills />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/profile"
+        element={
+          <ProtectedRoute allowedRole="admin">
+            <AdminProfile />
           </ProtectedRoute>
         }
       />
